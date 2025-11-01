@@ -288,6 +288,10 @@ bool check_queries(json& queriesJson) {
                 std::cerr << "knn must contain integer 'id'\n";
                 return false;
             }
+            if(!event.contains("pois") || !event["pois"].is_string()){
+                std::cerr<<"Pois must be a string\n";
+                return false;
+            }
             if (!event.contains("type") || !event["type"].is_string()) {
                 std::cerr << "knn must contain string 'type' (POI type)\n";
                 return false;
@@ -298,8 +302,8 @@ bool check_queries(json& queriesJson) {
             }
             auto qp = event["query_point"];
             if (!qp.contains("lat") || !qp["lat"].is_number() ||
-                !qp.contains("lon") || !qp["lon"].is_number()) {
-                std::cerr << "query_point must have numeric 'lat' and 'lon'\n";
+                !qp.contains("lon") || !qp["lon"].is_number() || qp.size() != 2) {
+                std::cerr << "query_point must have numeric 'lat' and 'lon' only \n";
                 return false;
             }
             if (!event.contains("k") || !event["k"].is_number_integer()) {

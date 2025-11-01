@@ -21,8 +21,6 @@ json process_query(const json& query, Graph& graph) {
         return {{"done", true}};
     }
     else if (type == "shortest_path") {
-        // compute shortest path here
-        // return {{"id", query["id"]}, {"possible", true}, {"minimum_time", 123.4}, {"path", {10, 20, 30}}};
         int source = query["source"];
         int target = query["target"];
         std::string mode = query["mode"];
@@ -53,7 +51,27 @@ json process_query(const json& query, Graph& graph) {
         return out;
     }
     else if (type == "knn") {
-        // compute KNN
+        std::string pois = query["type"];
+        int k = query["k"];
+        int id = query["id"].get<int>();
+        double lat = query["query_point"]["lat"];
+        double lon = query["query_point"]["lon"];
+
+        json out;
+        out["id"] = id;
+
+        if(query["metric"] == "shortest_path"){
+            out["nodes"] = knn_shortest_path(graph , id , pois , k);
+            return out;
+        }
+        else if(query["metric"] == "Euclidean"){
+            out["nodes"] = knn_euclidean(graph , id , lat , lon , pois , k);
+            return out;
+        }
+        else{
+            return {{"id", id} , {"error", "Invalid metric"}};
+        }
+        
     }
 
     return {{"error", "unknown query type"}};
