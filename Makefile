@@ -2,10 +2,7 @@
 CXX := g++
 CXXFLAGS := -std=c++17 -Wall -Wextra -O2
 
-# For GCC < 9, uncomment the next line to link filesystem manually
-# LDFLAGS := -lstdc++fs
-
-# Paths
+# Directories and target
 SRC_DIR := Phase-1
 OBJ_DIR := build
 TARGET := phase1
@@ -19,22 +16,22 @@ all: $(TARGET)
 
 # Link step
 $(TARGET): $(OBJS)
-	@echo "Linking $(TARGET)..."
-	$(CXX) $(CXXFLAGS) $(OBJS) -o $@ $(LDFLAGS)
+	@echo "🔗 Linking $(TARGET)..."
+	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 
 # Compile step
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
-	@echo "Compiling $<..."
+	@echo "🛠️  Compiling $<..."
 	$(CXX) $(CXXFLAGS) -I$(SRC_DIR) -c $< -o $@
 
 # Ensure build directory exists
 $(OBJ_DIR):
 	mkdir -p $(OBJ_DIR)
 
-# Clean up
+# Clean up build and binary
 clean:
 	rm -rf $(OBJ_DIR) $(TARGET)
 
-# Run the program with sample files (optional)
+# Optional: quick run with test files
 run: $(TARGET)
-	./$(TARGET) graph.json queries.json
+	./$(TARGET) graph.json queries.json output.json

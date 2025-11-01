@@ -77,7 +77,7 @@ bool check_graph(json& graphJson){
         }
         for(auto&edge : edges){
             if(!edge.contains("id") || !edge.contains("u") || !edge.contains("v") || !edge.contains("length") || !edge.contains("average_time") || !edge.contains("oneway") || !edge.contains("road_type") || (edge.size() != 8 && edge.size() != 7) || ((edge.size() == 8) && !edge.contains("speed_profile")) || !edge.is_object()){
-                std::cerr << "Fields missing or extra in edges in graph.json\n";
+                std::cerr << "Fields missing or extra in edge in graph.json\n";
                 return false;
             }
 
@@ -116,7 +116,7 @@ bool check_graph(json& graphJson){
                 return false;
             }
             if(edge.contains("speed_profile")){
-                if(!edges["speed_profile"].is_array()){
+                if(!edge["speed_profile"].is_array()){
                     std::cerr<<"Speed_profile is an array\n";
                 }
                 if(edge["speed_profile"].size() != 96){

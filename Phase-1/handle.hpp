@@ -51,7 +51,7 @@ json process_query(const json& query, Graph& graph) {
         return out;
     }
     else if (type == "knn") {
-        std::string pois = query["type"];
+        std::string pois = query["pois"];
         int k = query["k"];
         int id = query["id"].get<int>();
         double lat = query["query_point"]["lat"];

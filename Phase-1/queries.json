@@ -1,0 +1,35 @@
+{
+  "meta": {
+    "id": "sample_queries_1"
+  },
+
+  "events": [
+    {
+      "type": "shortest_path",
+      "id": 1,
+      "source": 0,
+      "target": 4,
+      "mode": "distance",
+      "constraints": {
+        "forbidden_nodes": [],
+        "forbidden_road_types": []
+      }
+    },
+    {
+      "type": "knn",
+      "id": 2,
+      "pois": "Hospital",
+      "query_point": { "lat": 0.0, "lon": 0.0 },
+      "k": 2,
+      "metric": "Euclidean"
+    },
+    {
+      "type": "knn",
+      "id": 3,
+      "pois": "Restaurant",
+      "query_point": { "lat": 0.0, "lon": 0.0 },
+      "k": 2,
+      "metric": "shortest_path"
+    }
+  ]
+}

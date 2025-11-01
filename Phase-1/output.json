@@ -1,0 +1,15 @@
+{
+    "id": 1,
+    "possible": false,
+    "processing_time": 0.005167
+}
+{
+    "id": 2,
+    "nodes": [],
+    "processing_time": 0.003458
+}
+{
+    "id": 3,
+    "nodes": [],
+    "processing_time": 0.001917
+}

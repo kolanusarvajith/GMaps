@@ -1,0 +1,63 @@
+{
+  "meta": {
+    "id": "sample_test_1",
+    "nodes": 5,
+    "description": "Small test graph for shortest path and KNN"
+  },
+
+  "nodes": [
+    { "id": 0, "lat": 0.0, "lon": 0.0, "pois": [] },
+    { "id": 1, "lat": 0.0, "lon": 1.0, "pois": ["Restaurant"] },
+    { "id": 2, "lat": 1.0, "lon": 0.0, "pois": ["Hospital"] },
+    { "id": 3, "lat": 1.0, "lon": 1.0, "pois": ["Restaurant", "School"] },
+    { "id": 4, "lat": 2.0, "lon": 1.0, "pois": ["Hospital"] }
+  ],
+
+  "edges": [
+    {
+      "id": 0,
+      "u": 0,
+      "v": 1,
+      "length": 1.0,
+      "average_time": 2.0,
+      "oneway": false,
+      "road_type": "primary"
+    },
+    {
+      "id": 1,
+      "u": 0,
+      "v": 2,
+      "length": 1.0,
+      "average_time": 2.0,
+      "oneway": false,
+      "road_type": "primary"
+    },
+    {
+      "id": 2,
+      "u": 1,
+      "v": 3,
+      "length": 1.0,
+      "average_time": 2.0,
+      "oneway": false,
+      "road_type": "secondary"
+    },
+    {
+      "id": 3,
+      "u": 2,
+      "v": 3,
+      "length": 1.0,
+      "average_time": 2.0,
+      "oneway": false,
+      "road_type": "secondary"
+    },
+    {
+      "id": 4,
+      "u": 3,
+      "v": 4,
+      "length": 1.0,
+      "average_time": 2.0,
+      "oneway": false,
+      "road_type": "highway"
+    }
+  ]
+}
